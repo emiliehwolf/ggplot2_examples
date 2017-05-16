@@ -22,10 +22,19 @@ theme_set(theme_bw(base_size = 14))
 qplot(x = wt, y = mpg, data = mtcars)
 ```
 ![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
-
+```
 qplot(1:10,rnorm(10))
+```
+![Rplot1.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot1.png)
+```
 qplot(x = wt, y = mpg, data = mtcars, main = "Miles per Gallon vs Weight\nAutomobiles (1973-74 models)", xlab = "Weight (lb/1000)", ylab = "Miles per US Gallon", xlim = c(1,6), ylim = c(0,40))
+```
+![Rplot2.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot2.png)
+```
 qplot(x = wt, y = mpg, data = mtcars) + ggtitle("Miles per Gallon vs Weight\nAutomobiles (1973-74 models)") + xlab("Weight (lb/1000)") + ylab("Miles per US Gallon") + xlim(c(1,6)) + ylim(c(0,40))
+```
+![Rplot3.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot3.png)
+```
 basicCarPlot <- qplot(wt, mpg, data = mtcars)
 basicCarPlot <- basicCarPlot + ggtitle("Miles per Gallon vs Weight\nAutomobiles (1973-74)")
 basicCarPlot
@@ -67,3 +76,4 @@ carPlot + facet_wrap( ~ carb)
 carPlot + facet_wrap( ~ carb + gear)
 qplot(wt, mpg, data = mtcars, facets = ~cyl)
 savehistory("~/Programming/ggplot2_examples/qplot_practice.Rhistory")
+```
