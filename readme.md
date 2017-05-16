@@ -159,7 +159,7 @@ xlab("Longitude") + ylab("Latitude") + scale_size_continuous(range = c(1,5))
 grep("^scale", objects("package:ggplot2"), value = TRUE)
 ```
 ```
-[1] "scale_alpha"               "scale_alpha_continuous"   
+ [1] "scale_alpha"               "scale_alpha_continuous"   
  [3] "scale_alpha_discrete"      "scale_alpha_identity"     
  [5] "scale_alpha_manual"        "scale_color_brewer"       
  [7] "scale_color_continuous"    "scale_color_discrete"     
