@@ -1,4 +1,4 @@
-```
+```python
 library(help = "datasets")
 str(mtcars)
 
@@ -16,19 +16,19 @@ str(mtcars)
  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
 ```
 
-```
+```python
 library(ggplot2)
 theme_set(theme_bw(base_size = 14))
 qplot(x = wt, y = mpg, data = mtcars)
 ```
 ![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
-```
+```java
 qplot(1:10,rnorm(10))
 ```
 ![Rplot1.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot1.png)
 
 ### Single Call
-```
+```javascript
 qplot(x = wt, y = mpg, data = mtcars, 
 main = "Miles per Gallon vs Weight\nAutomobiles (1973-74 models)", 
 xlab = "Weight (lb/1000)", ylab = "Miles per US Gallon", 
@@ -37,7 +37,7 @@ xlim = c(1,6), ylim = c(0,40))
 ![Rplot2.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot2.png)
 
 ### Add Layers
-```
+```r
 qplot(x = wt, y = mpg, data = mtcars) + 
 ggtitle("Miles per Gallon vs Weight\nAutomobiles (1973-74 models)") + 
 xlab("Weight (lb/1000)") + ylab("Miles per US Gallon") + 
