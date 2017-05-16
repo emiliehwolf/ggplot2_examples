@@ -264,12 +264,20 @@ group = Subject, ylab = "Concentration")
 ```
 ![Rplot18.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot18.png)
 
-### With color (not desired result!)
+### With color 
 ```r
 qplot(data = pkData, x = Time, y = Conc, geom = "path", 
 group = Subject, ylab = "Concentration", col = Subject)
 ```
 ![Rplot19.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot19.png)
+
+### Rainbow color
+```r
+qplot(data = pkData, x = Time, y = Conc, geom = "path", 
+group = Subject, ylab = "Concentration", col = Subject) + 
+scale_color_gradientn(colors = rainbow(16))
+```
+![Rplot27.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot27.png)
 
 ### Faceting (paneling) with 1 row and multiple columns
 ```r
@@ -307,8 +315,8 @@ carPlot + facet_wrap( ~ carb + gear)
 ```
 ![Rplot25.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot25.png)
 
-### more paneling
+### Alternative: use facets argument
 ```r
-qplot(wt, mpg, data = mtcars, facets = ~cyl)
+qplot(wt, mpg, data = mtcars, facets = ~ cyl)
 ```
 ![Rplot26.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot26.png)
