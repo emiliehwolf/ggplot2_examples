@@ -1,3 +1,4 @@
+# Examples of qplot() and ggplot() 
 ### Tidy data within R
 ```r
 library(help = "datasets")
