@@ -146,7 +146,7 @@ qplot(wt, mpg, data = mtcars, color = "blue")
 ```
 ![Rplot11.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot11.png)
 
-### Change transparency and scale size
+### Use alpha to change transparency to show density
 ```r
 qplot(x = long, y = lat, data = quakes, size = mag, col = -depth, 
 alpha = I(.33)) + ggtitle("Locations of Earthquakes off Fiji") + 
