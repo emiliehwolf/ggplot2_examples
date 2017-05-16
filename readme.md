@@ -25,12 +25,7 @@ qplot(x = wt, y = mpg, data = mtcars)
 ```
 ![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
 
-### Quick 'data.frame':	1000 obs. of  5 variables:
- $ lat     : num  -20.4 -20.6 -26 -18 -20.4 ...
- $ long    : num  182 181 184 182 182 ...
- $ depth   : int  562 650 42 626 649 195 82 194 211 622 ...
- $ mag     : num  4.8 4.2 5.4 4.1 4 4 4.8 4.4 4.7 4.3 ...
- $ stations: int  41 15 43 19 11 12 43 15 35 19 ...plot of vectors
+### Quick plot of vectors
 ```r
 qplot(1:10,rnorm(10))
 ```
@@ -129,7 +124,7 @@ str(quakes)
  $ stations: int  41 15 43 19 11 12 43 15 35 19 ...
 ```
 
-### Aesthetics
+### Aesthetics (color, shape, size, alpha, fill, linetype, and x and y axes)
 ```r
 qplot(x = long, y = lat, data = quakes, size = mag, col = -depth) + 
 ggtitle("Locations of Earthquakes off Fiji") + xlab("Longitude") + 
@@ -151,100 +146,145 @@ qplot(wt, mpg, data = mtcars, color = "blue")
 ```
 ![Rplot11.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot11.png)
 
-###
+### Scaling layers that control aesthetics
 ```r
 grep("^scale", objects("package:ggplot2"), value = TRUE)
 ```
-
-
-###
-```r
-scale_color_gradientn(colors = rainbow(6))
-rainbow(6)
+```
+[1] "scale_alpha"               "scale_alpha_continuous"   
+ [3] "scale_alpha_discrete"      "scale_alpha_identity"     
+ [5] "scale_alpha_manual"        "scale_color_brewer"       
+ [7] "scale_color_continuous"    "scale_color_discrete"     
+ [9] "scale_color_distiller"     "scale_color_gradient"     
+[11] "scale_color_gradient2"     "scale_color_gradientn"    
+[13] "scale_color_grey"          "scale_color_hue"          
+[15] "scale_color_identity"      "scale_color_manual"       
+[17] "scale_colour_brewer"       "scale_colour_continuous"  
+[19] "scale_colour_date"         "scale_colour_datetime"    
+[21] "scale_colour_discrete"     "scale_colour_distiller"   
+[23] "scale_colour_gradient"     "scale_colour_gradient2"   
+[25] "scale_colour_gradientn"    "scale_colour_grey"        
+[27] "scale_colour_hue"          "scale_colour_identity"    
+[29] "scale_colour_manual"       "scale_fill_brewer"        
+[31] "scale_fill_continuous"     "scale_fill_date"          
+[33] "scale_fill_datetime"       "scale_fill_discrete"      
+[35] "scale_fill_distiller"      "scale_fill_gradient"      
+[37] "scale_fill_gradient2"      "scale_fill_gradientn"     
+[39] "scale_fill_grey"           "scale_fill_hue"           
+[41] "scale_fill_identity"       "scale_fill_manual"        
+[43] "scale_linetype"            "scale_linetype_continuous"
+[45] "scale_linetype_discrete"   "scale_linetype_identity"  
+[47] "scale_linetype_manual"     "scale_radius"             
+[49] "scale_shape"               "scale_shape_continuous"   
+[51] "scale_shape_discrete"      "scale_shape_identity"     
+[53] "scale_shape_manual"        "scale_size"               
+[55] "scale_size_area"           "scale_size_continuous"    
+[57] "scale_size_date"           "scale_size_datetime"      
+[59] "scale_size_discrete"       "scale_size_identity"      
+[61] "scale_size_manual"         "scale_x_continuous"       
+[63] "scale_x_date"              "scale_x_datetime"         
+[65] "scale_x_discrete"          "scale_x_log10"            
+[67] "scale_x_reverse"           "scale_x_sqrt"             
+[69] "scale_x_time"              "scale_y_continuous"       
+[71] "scale_y_date"              "scale_y_datetime"         
+[73] "scale_y_discrete"          "scale_y_log10"            
+[75] "scale_y_reverse"           "scale_y_sqrt"             
+[77] "scale_y_time"             
 ```
 
-
-###
+### Add layer to edit shapes manually
 ```r
-carPlot <- qplot(x = wt, y = mpg, data = mtcars, shape = cyl, main = "Miles per Gallon vs Weight\nAutomobiles (1973-74 models)", xlab = "Weight (lb/1000)", ylab = "Miles per US Gallon", xlim = c(1,6), ylim = c(0,40))
-```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
-
-###
-```r
+carPlot <- qplot(x = wt, y = mpg, data = mtcars, shape = cyl, 
+main = "Miles per Gallon vs Weight\nAutomobiles (1973-74 models)", 
+xlab = "Weight (lb/1000)", ylab = "Miles per US Gallon", 
+xlim = c(1,6), ylim = c(0,40))
 carPlot + scale_shape_manual("Number of \nCylinders", values = c(3,5,2))
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot12.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot12.png)
 
-###
+### Another example of layers to edit legends
 ```r
-carPlot <- qplot(x = wt, y = mpg, data = mtcars, shape = cyl, size = disp, main = "Miles per Gallon vs Weight\nAutomobiles (1973-74 models)", xlab = "Weight (lb/1000)", ylab = "Miles per US Gallon", xlim = c(1,6), ylim = c(0,40))
-```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+carPlot <- qplot(x = wt, y = mpg, data = mtcars, 
+shape = cyl, size = disp, 
+main = "Miles per Gallon vs Weight\nAutomobiles (1973-74 models)", 
+xlab = "Weight (lb/1000)", ylab = "Miles per US Gallon", 
+xlim = c(1,6), ylim = c(0,40))
 
-###
-```r
-carPlot + scale_shape_discrete("Number of Cylinders") + scale_size_continuous("Displacement (cu.in.)")
+carPlot + scale_shape_discrete("Number of Cylinders") + 
+scale_size_continuous("Displacement (cu.in.)")
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot13.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot13.png)
 
-###
+### Edit the min and max sizes
 ```r
 carPlot + scale_size_continuous("Displacement (cu.in.)", range = c(4,8))
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot14.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot14.png)
 
-###
+### Breaks and limits
 ```r
-carPlot + scale_shape_discrete("Number of cylinders") + scale_size_continuous("Displacement (cu.in.)", range = c(4,8), breaks = seq(100, 500, by = 100), limits = c(0,500))
+carPlot + scale_shape_discrete("Number of cylinders") + 
+scale_size_continuous("Displacement (cu.in.)", range = c(4,8), 
+breaks = seq(100, 500, by = 100), limits = c(0,500))
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot15.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot15.png)
 
-###
+### Tidy data in mangoTraining package with repeating times
 ```r
 install.packages("mangoTraining")
 library(mangoTraining)
 head(pkData)
+```
+```
+  Subject Dose Time   Conc
+1       1   25    0   0.00
+2       1   25    1 660.13
+3       1   25    6 178.92
+4       1   25   12  88.99
+5       1   25   24  42.71
+6       2   25    0   0.00
+```
+
+### Not the desired result!
+```r
 qplot(data = pkData, x = Time, y = Conc, geom = "line")
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot16.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot16.png)
 
-###
+### Not the desired result!
 ```r
 qplot(data = pkData, x = Time, y = Conc, geom = "path")
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot17.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot17.png)
 
-###
+### Grouping produces with desired result!
 ```r
 qplot(data = pkData, x = Time, y = Conc, geom = "path", group = Subject, ylab = "Concentration")
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot18.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot18.png)
 
-###
 ```r
 qplot(data = pkData, x = Time, y = Conc, geom = "path", group = Subject, ylab = "Concentration", col = Subject)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot19.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot19.png)
 
-###
+### Faceting (paneling) with one row and multiple columns
 ```r
-?facet_grid
 carPlot + facet_grid(. ~ gear)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot20.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot20.png)
 
-###
+### Faceting with multiple rows and one column
 ```r
 carPlot + facet_grid(gear ~ .)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot21.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot21.png)
 
-###
+### 3 x 3 plot
 ```r
 carPlot + facet_grid(cyl ~ gear)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot22.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot22.png)
 
 ###
 ```r
