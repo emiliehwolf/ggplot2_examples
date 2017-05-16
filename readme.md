@@ -26,12 +26,22 @@ qplot(x = wt, y = mpg, data = mtcars)
 qplot(1:10,rnorm(10))
 ```
 ![Rplot1.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot1.png)
+
+###Single Call
 ```
-qplot(x = wt, y = mpg, data = mtcars, main = "Miles per Gallon vs Weight\nAutomobiles (1973-74 models)", xlab = "Weight (lb/1000)", ylab = "Miles per US Gallon", xlim = c(1,6), ylim = c(0,40))
+qplot(x = wt, y = mpg, data = mtcars, 
+main = "Miles per Gallon vs Weight\nAutomobiles (1973-74 models)", 
+xlab = "Weight (lb/1000)", ylab = "Miles per US Gallon", 
+xlim = c(1,6), ylim = c(0,40))
 ```
 ![Rplot2.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot2.png)
+
+###Add Layers
 ```
-qplot(x = wt, y = mpg, data = mtcars) + ggtitle("Miles per Gallon vs Weight\nAutomobiles (1973-74 models)") + xlab("Weight (lb/1000)") + ylab("Miles per US Gallon") + xlim(c(1,6)) + ylim(c(0,40))
+qplot(x = wt, y = mpg, data = mtcars) + 
+ggtitle("Miles per Gallon vs Weight\nAutomobiles (1973-74 models)") + 
+xlab("Weight (lb/1000)") + ylab("Miles per US Gallon") + 
+xlim(c(1,6)) + ylim(c(0,40))
 ```
 ![Rplot3.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot3.png)
 ```
