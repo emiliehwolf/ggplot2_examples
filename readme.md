@@ -150,7 +150,7 @@ qplot(wt, mpg, data = mtcars, color = "blue")
 ```r
 qplot(x = long, y = lat, data = quakes, size = mag, col = -depth, 
 alpha = I(.33)) + ggtitle("Locations of Earthquakes off Fiji") + 
-xlab("Longitude") + ylab("Latitude") + scale_size_continuous(range = c(1,4))
+xlab("Longitude") + ylab("Latitude") + scale_size_continuous(range = c(1,5))
 ```
 ![Rplot28.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot28.png)
 
@@ -159,7 +159,7 @@ xlab("Longitude") + ylab("Latitude") + scale_size_continuous(range = c(1,4))
 grep("^scale", objects("package:ggplot2"), value = TRUE)
 ```
 ```
-[1] "scale_alpha"               "scale_alpha_continuous"   
+ [1] "scale_alpha"               "scale_alpha_continuous"   
  [3] "scale_alpha_discrete"      "scale_alpha_identity"     
  [5] "scale_alpha_manual"        "scale_color_brewer"       
  [7] "scale_color_continuous"    "scale_color_discrete"     
