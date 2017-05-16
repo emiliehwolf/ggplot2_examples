@@ -99,13 +99,13 @@ qplot(cyl, mpg, data = mtcars) + geom_boxplot()
 ```
 ![Rplot6.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot6.png)
 
-### Scatterplot + linear smoothing line
+### Scatterplot + linear smoothing line layer
 ```r
 qplot(wt, mpg, data = mtcars) + geom_smooth(method = "lm")
 ```
 ![Rplot7.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot7.png)
 
-### Use geom argument to add linear smoothing line
+### Or use geom argument to add linear smoothing line
 ```r
 qplot(wt, mpg, data = mtcars, geom = c("point","smooth"), method = "lm")
 ```
@@ -140,7 +140,7 @@ qplot(wt, mpg, data = mtcars, color = I("blue"))
 ```
 ![Rplot10.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot10.png)
 
-### Color as a variable (undesired)
+### Color as a variable (not desired result!)
 ```r
 qplot(wt, mpg, data = mtcars, color = "blue")
 ```
@@ -202,7 +202,7 @@ carPlot + scale_shape_manual("Number of \nCylinders", values = c(3,5,2))
 ```
 ![Rplot12.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot12.png)
 
-### Another example of layers to edit legends
+### Another example of adding layers to edit legends
 ```r
 carPlot <- qplot(x = wt, y = mpg, data = mtcars, 
 shape = cyl, size = disp, 
@@ -264,20 +264,20 @@ group = Subject, ylab = "Concentration")
 ```
 ![Rplot18.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot18.png)
 
-## With color
+### With color (not desired result!)
 ```r
 qplot(data = pkData, x = Time, y = Conc, geom = "path", 
 group = Subject, ylab = "Concentration", col = Subject)
 ```
 ![Rplot19.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot19.png)
 
-### Faceting (paneling) with one row and multiple columns
+### Faceting (paneling) with 1 row and multiple columns
 ```r
 carPlot + facet_grid(. ~ gear)
 ```
 ![Rplot20.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot20.png)
 
-### Faceting with multiple rows and one column
+### Faceting with multiple rows and 1 column
 ```r
 carPlot + facet_grid(gear ~ .)
 ```
@@ -301,13 +301,13 @@ carPlot + facet_wrap( ~ carb)
 ```
 ![Rplot24.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot24.png)
 
-### 
+### Combo of variables wrapped
 ```r
 carPlot + facet_wrap( ~ carb + gear)
 ```
 ![Rplot25.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot25.png)
 
-###
+### more paneling
 ```r
 qplot(wt, mpg, data = mtcars, facets = ~cyl)
 ```
