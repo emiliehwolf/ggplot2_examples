@@ -49,11 +49,19 @@ xlim(c(1,6)) + ylim(c(0,40))
 basicCarPlot <- qplot(wt, mpg, data = mtcars)
 basicCarPlot <- basicCarPlot + ggtitle("Miles per Gallon vs Weight\nAutomobiles (1973-74)")
 basicCarPlot
+```
+![Rplot4.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot4.png)
+```r
 carPlot <- qplot(x = wt, y = mpg, data = mtcars)
-setwd("~/Programming/ggplot2_examples")
 ggsave(file = "carPlot.png", carPlot)
+```
+![carPlot.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/carPlot.png)
+```r
 mtcars$cyl <- factor(mtcars$cyl)
 qplot(cyl, mpg, data = mtcars, geom = "boxplot")
+```
+![Rplot5.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot5.png)
+```r
 grep("^geom", objects("package:ggplot2"), value = TRUE)
 qplot(cyl, mpg, data = mtcars) + geom_boxplot()
 qplot(wt, mpg, data = mtcars) + geom_smooth(method = "lm")
