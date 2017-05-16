@@ -146,6 +146,14 @@ qplot(wt, mpg, data = mtcars, color = "blue")
 ```
 ![Rplot11.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot11.png)
 
+### Change transparency and scale size
+```r
+qplot(x = long, y = lat, data = quakes, size = mag, col = -depth, 
+alpha = I(.33)) + ggtitle("Locations of Earthquakes off Fiji") + 
+xlab("Longitude") + ylab("Latitude") + scale_size_continuous(range = c(1,4))
+```
+![Rplot28.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot28.png)
+
 ### Scaling layers that control aesthetics
 ```r
 grep("^scale", objects("package:ggplot2"), value = TRUE)
