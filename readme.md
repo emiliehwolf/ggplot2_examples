@@ -259,12 +259,15 @@ qplot(data = pkData, x = Time, y = Conc, geom = "path")
 
 ### Grouping produces with desired result!
 ```r
-qplot(data = pkData, x = Time, y = Conc, geom = "path", group = Subject, ylab = "Concentration")
+qplot(data = pkData, x = Time, y = Conc, geom = "path", 
+group = Subject, ylab = "Concentration")
 ```
 ![Rplot18.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot18.png)
 
+## With color
 ```r
-qplot(data = pkData, x = Time, y = Conc, geom = "path", group = Subject, ylab = "Concentration", col = Subject)
+qplot(data = pkData, x = Time, y = Conc, geom = "path", 
+group = Subject, ylab = "Concentration", col = Subject)
 ```
 ![Rplot19.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot19.png)
 
@@ -280,32 +283,32 @@ carPlot + facet_grid(gear ~ .)
 ```
 ![Rplot21.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot21.png)
 
-### 3 x 3 plot
+### Intersection of variables in a 3 x 3 plot
 ```r
 carPlot + facet_grid(cyl ~ gear)
 ```
 ![Rplot22.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot22.png)
 
-###
+### Combinations of variables side by side in a 1 x 8 plot (empty panel not displayed)
 ```r
 carPlot + facet_grid(. ~ gear + cyl)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot23.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot23.png)
 
-###
+### facet_wrap() great for many panels
 ```r
 carPlot + facet_wrap( ~ carb)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot24.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot24.png)
 
-###
+### 
 ```r
 carPlot + facet_wrap( ~ carb + gear)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot25.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot25.png)
 
 ###
 ```r
 qplot(wt, mpg, data = mtcars, facets = ~cyl)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot26.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot26.png)
