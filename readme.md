@@ -25,7 +25,12 @@ qplot(x = wt, y = mpg, data = mtcars)
 ```
 ![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
 
-### Quick scatterplot of vectors
+### Quick 'data.frame':	1000 obs. of  5 variables:
+ $ lat     : num  -20.4 -20.6 -26 -18 -20.4 ...
+ $ long    : num  182 181 184 182 182 ...
+ $ depth   : int  562 650 42 626 649 195 82 194 211 622 ...
+ $ mag     : num  4.8 4.2 5.4 4.1 4 4 4.8 4.4 4.7 4.3 ...
+ $ stations: int  41 15 43 19 11 12 43 15 35 19 ...plot of vectors
 ```r
 qplot(1:10,rnorm(10))
 ```
@@ -99,19 +104,19 @@ qplot(cyl, mpg, data = mtcars) + geom_boxplot()
 ```
 ![Rplot6.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot6.png)
 
-### Linear smoothing line with layers
+### Scatterplot + linear smoothing line
 ```r
 qplot(wt, mpg, data = mtcars) + geom_smooth(method = "lm")
 ```
 ![Rplot7.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot7.png)
 
-### Linear smoothing line with arguments
+### Use geom argument to add linear smoothing line
 ```r
 qplot(wt, mpg, data = mtcars, geom = c("point","smooth"), method = "lm")
 ```
 ![Rplot8.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot8.png)
 
-### Dataset of earthquakes within R
+### Tidy data within R
 ```r
 str(quakes)
 ```
@@ -131,6 +136,8 @@ ggtitle("Locations of Earthquakes off Fiji") + xlab("Longitude") +
 ylab("Latitude")
 ```
 ![Rplot9.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot9.png)
+### Enlarged to show detail
+![bigfijiplot.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/bigfijiplot.png)
 
 ### Make everything one color with I()
 ```r
@@ -148,14 +155,14 @@ qplot(wt, mpg, data = mtcars, color = "blue")
 ```r
 grep("^scale", objects("package:ggplot2"), value = TRUE)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+
 
 ###
 ```r
 scale_color_gradientn(colors = rainbow(6))
 rainbow(6)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+
 
 ###
 ```r
