@@ -28,7 +28,7 @@ qplot(1:10,rnorm(10))
 ```
 ![Rplot1.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot1.png)
 
-### Single Call
+### Single call to qplot() with multiple arguments
 ```r
 qplot(x = wt, y = mpg, data = mtcars, 
 main = "Miles per Gallon vs Weight\nAutomobiles (1973-74 models)", 
@@ -37,7 +37,7 @@ xlim = c(1,6), ylim = c(0,40))
 ```
 ![Rplot2.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot2.png)
 
-### Add Layers
+### Identical quick plot with additional layers
 ```r
 qplot(x = wt, y = mpg, data = mtcars) + 
 ggtitle("Miles per Gallon vs Weight\nAutomobiles (1973-74 models)") + 
