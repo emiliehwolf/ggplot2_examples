@@ -23,13 +23,13 @@ library(ggplot2)
 theme_set(theme_bw(base_size = 14))
 qplot(x = wt, y = mpg, data = mtcars)
 ```
-![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot0.png)
+![Rplot0.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot0.png)
 
 ### Quick plot of vectors
 ```r
 qplot(1:10,rnorm(10))
 ```
-![Rplot1.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot1.png)
+![Rplot1.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot1.png)
 
 ### Single call to qplot() with multiple arguments
 ```r
@@ -38,7 +38,7 @@ main = "Miles per Gallon vs Weight\nAutomobiles (1973-74 models)",
 xlab = "Weight (lb/1000)", ylab = "Miles per US Gallon", 
 xlim = c(1,6), ylim = c(0,40))
 ```
-![Rplot2.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot2.png)
+![Rplot2.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot2.png)
 
 ### Identical quick plot with additional layers
 ```r
@@ -47,7 +47,7 @@ ggtitle("Miles per Gallon vs Weight\nAutomobiles (1973-74 models)") +
 xlab("Weight (lb/1000)") + ylab("Miles per US Gallon") + 
 xlim(c(1,6)) + ylim(c(0,40))
 ```
-![Rplot3.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot3.png)
+![Rplot3.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot3.png)
 
 ### Plots as objects
 ```r
@@ -55,21 +55,21 @@ basicCarPlot <- qplot(wt, mpg, data = mtcars)
 basicCarPlot <- basicCarPlot + ggtitle("Miles per Gallon vs Weight\nAutomobiles (1973-74)")
 basicCarPlot
 ```
-![Rplot4.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot4.png)
+![Rplot4.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot4.png)
 
 ### ggsave()
 ```r
 carPlot <- qplot(x = wt, y = mpg, data = mtcars)
 ggsave(file = "carPlot.png", carPlot)
 ```
-![carPlot.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/carPlot.png)
+![carPlot.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/carPlot.png)
 
 ### Boxplot with geom argument
 ```r
 mtcars$cyl <- factor(mtcars$cyl)
 qplot(cyl, mpg, data = mtcars, geom = "boxplot")
 ```
-![Rplot5.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot5.png)
+![Rplot5.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot5.png)
 
 ### Plot types
 ```r
@@ -97,19 +97,19 @@ grep("^geom", objects("package:ggplot2"), value = TRUE)
 ```r
 qplot(cyl, mpg, data = mtcars) + geom_boxplot()
 ```
-![Rplot6.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot6.png)
+![Rplot6.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot6.png)
 
 ### Scatterplot + linear smoothing line layer
 ```r
 qplot(wt, mpg, data = mtcars) + geom_smooth(method = "lm")
 ```
-![Rplot7.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot7.png)
+![Rplot7.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot7.png)
 
 ### Or use geom argument to add linear smoothing line
 ```r
 qplot(wt, mpg, data = mtcars, geom = c("point","smooth"), method = "lm")
 ```
-![Rplot8.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot8.png)
+![Rplot8.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot8.png)
 
 ### Tidy data within R
 ```r
@@ -130,21 +130,21 @@ qplot(x = long, y = lat, data = quakes, size = mag, col = -depth) +
 ggtitle("Locations of Earthquakes off Fiji") + xlab("Longitude") + 
 ylab("Latitude")
 ```
-![Rplot9.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot9.png)
+![Rplot9.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot9.png)
 ### Enlarged to show detail
-![bigfijiplot.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/bigfijiplot.png)
+![bigfijiplot.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/bigfijiplot.png)
 
 ### Make everything one color with I()
 ```r
 qplot(wt, mpg, data = mtcars, color = I("blue"))
 ```
-![Rplot10.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot10.png)
+![Rplot10.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot10.png)
 
 ### Color as a variable (not desired result!)
 ```r
 qplot(wt, mpg, data = mtcars, color = "blue")
 ```
-![Rplot11.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot11.png)
+![Rplot11.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot11.png)
 
 ### Change transparency and scale size
 ```r
@@ -152,7 +152,7 @@ qplot(x = long, y = lat, data = quakes, size = mag, col = -depth,
 alpha = I(.33)) + ggtitle("Locations of Earthquakes off Fiji") + 
 xlab("Longitude") + ylab("Latitude") + scale_size_continuous(range = c(1,5))
 ```
-![Rplot28.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot28.png)
+![Rplot28.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot28.png)
 
 ### Scaling layers that control aesthetics
 ```r
@@ -208,7 +208,7 @@ xlab = "Weight (lb/1000)", ylab = "Miles per US Gallon",
 xlim = c(1,6), ylim = c(0,40))
 carPlot + scale_shape_manual("Number of \nCylinders", values = c(3,5,2))
 ```
-![Rplot12.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot12.png)
+![Rplot12.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot12.png)
 
 ### Another example of adding layers to edit legends
 ```r
@@ -221,13 +221,13 @@ xlim = c(1,6), ylim = c(0,40))
 carPlot + scale_shape_discrete("Number of Cylinders") + 
 scale_size_continuous("Displacement (cu.in.)")
 ```
-![Rplot13.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot13.png)
+![Rplot13.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot13.png)
 
 ### Edit the min and max sizes
 ```r
 carPlot + scale_size_continuous("Displacement (cu.in.)", range = c(4,8))
 ```
-![Rplot14.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot14.png)
+![Rplot14.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot14.png)
 
 ### Breaks and limits
 ```r
@@ -235,7 +235,7 @@ carPlot + scale_shape_discrete("Number of cylinders") +
 scale_size_continuous("Displacement (cu.in.)", range = c(4,8), 
 breaks = seq(100, 500, by = 100), limits = c(0,500))
 ```
-![Rplot15.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot15.png)
+![Rplot15.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot15.png)
 
 ### Tidy data in mangoTraining package with repeating times
 ```r
@@ -257,27 +257,27 @@ head(pkData)
 ```r
 qplot(data = pkData, x = Time, y = Conc, geom = "line")
 ```
-![Rplot16.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot16.png)
+![Rplot16.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot16.png)
 
 ### Not the desired result!
 ```r
 qplot(data = pkData, x = Time, y = Conc, geom = "path")
 ```
-![Rplot17.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot17.png)
+![Rplot17.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot17.png)
 
 ### Grouping produces with desired result!
 ```r
 qplot(data = pkData, x = Time, y = Conc, geom = "path", 
 group = Subject, ylab = "Concentration")
 ```
-![Rplot18.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot18.png)
+![Rplot18.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot18.png)
 
 ### With color 
 ```r
 qplot(data = pkData, x = Time, y = Conc, geom = "path", 
 group = Subject, ylab = "Concentration", col = Subject)
 ```
-![Rplot19.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot19.png)
+![Rplot19.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot19.png)
 
 ### Rainbow color
 ```r
@@ -285,46 +285,46 @@ qplot(data = pkData, x = Time, y = Conc, geom = "path",
 group = Subject, ylab = "Concentration", col = Subject) + 
 scale_color_gradientn(colors = rainbow(16))
 ```
-![Rplot27.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot27.png)
+![Rplot27.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot27.png)
 
 ### Faceting (paneling) with 1 row and multiple columns
 ```r
 carPlot + facet_grid(. ~ gear)
 ```
-![Rplot20.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot20.png)
+![Rplot20.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot20.png)
 
 ### Faceting with multiple rows and 1 column
 ```r
 carPlot + facet_grid(gear ~ .)
 ```
-![Rplot21.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot21.png)
+![Rplot21.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot21.png)
 
 ### Intersection of variables in a 3 x 3 plot
 ```r
 carPlot + facet_grid(cyl ~ gear)
 ```
-![Rplot22.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot22.png)
+![Rplot22.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot22.png)
 
 ### Combinations of variables side by side in a 1 x 8 plot (empty panel not displayed)
 ```r
 carPlot + facet_grid(. ~ gear + cyl)
 ```
-![Rplot23.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot23.png)
+![Rplot23.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot23.png)
 
 ### facet_wrap() great for many panels
 ```r
 carPlot + facet_wrap( ~ carb)
 ```
-![Rplot24.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot24.png)
+![Rplot24.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot24.png)
 
 ### Combo of variables wrapped
 ```r
 carPlot + facet_wrap( ~ carb + gear)
 ```
-![Rplot25.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot25.png)
+![Rplot25.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot25.png)
 
 ### Alternative: use facets argument
 ```r
 qplot(wt, mpg, data = mtcars, facets = ~ cyl)
 ```
-![Rplot26.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/Rplot26.png)
+![Rplot26.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot26.png)
