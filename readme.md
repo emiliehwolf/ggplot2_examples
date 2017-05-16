@@ -1,7 +1,8 @@
 ```r
 library(help = "datasets")
 str(mtcars)
-
+```
+```
 'data.frame':	32 obs. of  11 variables:
  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
