@@ -508,5 +508,47 @@ strip.text = element_text(color = "tomato"))
 
 ### Global themes
 ```r
+theme_set(theme_dark(base_size = 18, base_family = "Courier New"))
 
+ggplot(data = mtcars, aes(x = wt, y = mpg)) + 
+geom_point(aes(shape = cyl, color = cyl), size = 3) + 
+geom_smooth(method = "lm", se = FALSE, aes(color = cyl))
 ```
+![Rplot40.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot40.png)
+
+### More themes in ggthemes package
+```r
+library(ggthemes)
+grep("^theme_", objects("package:ggthemes"), value = TRUE)
+```
+```
+ [1] "theme_base"            "theme_calc"           
+ [3] "theme_economist"       "theme_economist_white"
+ [5] "theme_excel"           "theme_few"            
+ [7] "theme_fivethirtyeight" "theme_foundation"     
+ [9] "theme_gdocs"           "theme_hc"             
+[11] "theme_igray"           "theme_map"            
+[13] "theme_pander"          "theme_par"            
+[15] "theme_solarized"       "theme_solarized_2"    
+[17] "theme_solid"           "theme_stata"          
+[19] "theme_tufte"           "theme_wsj" 
+```
+```r
+theme_set(theme_wsj())
+```
+![Rplot41.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot41.png)
+
+```r
+theme_set(theme_economist())
+```
+![Rplot42.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot42.png)
+
+```r
+theme_set(theme_map())
+```
+![Rplotmap.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplotmap.png)
+
+```r
+theme_set(theme_solarized_2())
+```
+![Rplotsol.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplotsol.png)
