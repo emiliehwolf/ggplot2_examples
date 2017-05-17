@@ -421,16 +421,16 @@ grep("^coord", objects("package:ggplot2"), value = TRUE)
 ## Extract map coordinates for New Zealand
 library(maps)
 nz <- map_data("nz") 
+str(nz)
 ```
-```r
-head(nz)
-      long       lat group order        region subregion
-1 172.7433 -34.44215     1     1 North.Island       <NA>
-2 172.7983 -34.45562     1     2 North.Island       <NA>
-3 172.8528 -34.44846     1     3 North.Island       <NA>
-4 172.8986 -34.41786     1     4 North.Island       <NA>
-5 172.9593 -34.42503     1     5 North.Island       <NA>
-6 173.0184 -34.39895     1     6 North.Island       <NA>
+```
+'data.frame':	1552 obs. of  6 variables:
+ $ long     : num  173 173 173 173 173 ...
+ $ lat      : num  -34.4 -34.5 -34.4 -34.4 -34.4 ...
+ $ group    : num  1 1 1 1 1 1 1 1 1 1 ...
+ $ order    : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ region   : chr  "North.Island " "North.Island " "North.Island " "North.Island " ...
+ $ subregion: chr  NA NA NA NA ...
 ```
 ```r
 ## Create plot object
