@@ -387,3 +387,20 @@ geom_point(aes(shape = cyl), size = 3) +
 geom_smooth(method = "lm", se = FALSE, col = "red", aes(shape = cyl))
 ```
 ![Rplot35.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot35.png)
+
+## Working with multiple data frames
+### "Shadow" plot
+```r
+## Create a copy of the mtcars data to be used as a "shadow"
+library(dplyr) 
+carCopy <- mtcars %>% select(-cyl)  ## Select all variables except 'cyl'
+## Use layers to control the color of points
+ggplot() + 
+geom_point(data = carCopy, aes(x = wt, y = mpg), color = "lightgrey") + 
+geom_point(data = mtcars, aes(x = wt, y = mpg)) + 
+facet_grid( ~ cyl) +   ## Note that 'cyl' only exists in mtcars, not carCopy
+ggtitle("MPG vs Weight Automobiles (1973-74 models)\nBy Number of Cylinders") + 
+xlab("Weight (lb/1000)") + 
+ylab("Miles per US Gallon")
+```
+![Rplot36.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot36.png)
