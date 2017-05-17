@@ -453,7 +453,7 @@ basicpie + coord_polar(theta = "y")
 ```
 ![Rplotpie.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplotpie.png)
 
-### It's better to use pie() function from graphics package
+### A truly simple pie chart
 ```r
 cyl <- table(mtcars$cyl)
 pie(cyl, main = "Pie Chart")
@@ -474,11 +474,11 @@ str(esoph)
  ```
 ```r
 slices <- table(esoph$agegp)
-> lbls <- names(slices)
-> pct <- round(slices/sum(slices)*100)
-> lbls <- paste(lbls, pct)
-> lbls <- paste(lbls, "%", sep = "")
-> pie(slices,labels = lbls, col = rainbow(length(lbls)), main = "Pie Chart of Age Groups")
+lbls <- names(slices)
+pct <- round(slices/sum(slices)*100)
+lbls <- paste(lbls, pct)
+lbls <- paste(lbls, "%", sep = "")
+pie(slices,labels = lbls, col = rainbow(length(lbls)), main = "Pie Chart of Age Groups")
 ```
 ![Rplot38.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot38.png)
-Pie charts are not recommended because people are better able to distinguish differences in length than in volume.
+**Pie charts are not recommended because people are better able to distinguish differences in length than in volume.**
