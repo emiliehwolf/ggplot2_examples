@@ -73,6 +73,7 @@ qplot(cyl, mpg, data = mtcars, geom = "boxplot")
 ![Rplot5.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot5.png)
 
 ### Plot types
+***Notice there is no geom_pie! Pie charts are not recommended in ggplot2.***
 ```r
 grep("^geom", objects("package:ggplot2"), value = TRUE)
 ```
@@ -442,3 +443,42 @@ library(mapproj)
 nzmap + coord_map("cylindrical")
 ```
 ![Rplot37.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot37.png)
+
+### A simple pie chart in ggplot2 is not so simple
+It's basically a bar chart changed to polar coordinates
+```r
+mtcars$cyl <- factor(mtcars$cyl) 
+basicpie <- ggplot(mtcars, aes(x = factor(1), fill = cyl)) + geom_bar(width = 1)
+basicpie + coord_polar(theta = "y")
+```
+![Rplotpie.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplotpie.png)
+
+### It's better to use pie() function from graphics package
+```r
+cyl <- table(mtcars$cyl)
+pie(cyl, main = "Pie Chart")
+```
+![Rplotpiechart.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplotpiechart.png)
+
+### Rainbow pie chart with annotations and percentages
+```r
+str(esoph)
+```
+```
+'data.frame':	88 obs. of  5 variables:
+ $ agegp    : Ord.factor w/ 6 levels "25-34"<"35-44"<..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ alcgp    : Ord.factor w/ 4 levels "0-39g/day"<"40-79"<..: 1 1 1 1 2 2 2 2 3 3 ...
+ $ tobgp    : Ord.factor w/ 4 levels "0-9g/day"<"10-19"<..: 1 2 3 4 1 2 3 4 1 2 ...
+ $ ncases   : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ ncontrols: num  40 10 6 5 27 7 4 7 2 1 ...
+ ```
+```r
+slices <- table(esoph$agegp)
+> lbls <- names(slices)
+> pct <- round(slices/sum(slices)*100)
+> lbls <- paste(lbls, pct)
+> lbls <- paste(lbls, "%", sep = "")
+> pie(slices,labels = lbls, col = rainbow(length(lbls)), main = "Pie Chart of Age Groups")
+```
+![Rplot38.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot38.png)
+Pie charts are not recommended because people are better able to distinguish differences in length than in volume.
