@@ -352,3 +352,33 @@ ggplot() + geom_point(data = mtcars, aes(x = wt, y = mpg), shape = 17, size = 3)
 ```
 ![Rplot31.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot31.png)
 
+### Define data and aesthetics up front when using multiple layers
+```r
+ggplot(data = mtcars, aes(x = wt, y = mpg)) + 
+geom_point(shape = 17, size = 3) + 
+geom_smooth(method = "lm", se = FALSE, col = "red")
+```
+![Rplot32.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot32.png)
+
+### Edit points by variable within call to aes()
+```r
+ggplot(data = mtcars, aes(x = wt, y = mpg)) + 
+geom_point(aes(shape = cyl), size = 3) + 
+geom_smooth(method = "lm", se = FALSE, col = "red")
+```
+![Rplot33.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot33.png)
+
+### Identical plot using qplot()
+```r
+qplot(data = mtcars, x = wt, y = mpg, shape = cyl, size = I(3)) + 
+geom_smooth(method = "lm", se = FALSE, col = "red", aes(shape = NULL))
+```
+![Rplot34.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot34.png)
+
+### Multiple smoothing lines by variable
+```r
+ggplot(data = mtcars, aes(x = wt, y = mpg)) + 
+geom_point(aes(shape = cyl), size = 3) + 
+geom_smooth(method = "lm", se = FALSE, col = "red", aes(shape = cyl))
+```
+![Rplot35.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot35.png)
