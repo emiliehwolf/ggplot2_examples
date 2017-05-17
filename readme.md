@@ -559,3 +559,19 @@ theme_set(theme_map())
 theme_set(theme_solarized_2())
 ```
 ![Rplotsol.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplotsol.png)
+
+### Edit legends
+```r
+states <- map_data("state")
+mapOfUSA <- qplot(long, lat, data = states, geom = "polygon", 
+group = group, fill = region, col = I("black")) 
+mapOfUSA <- mapOfUSA + theme(legend.position = "bottom") 
+mapOfUSA + guides(fill = guide_legend(title = "State",
+nrow =10, title.position = "top"))
+```
+![Rplot50.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot50.png)
+
+### Remove legend altogether
+```r
+mapOfUSA + scale_fill_discrete(guide = FALSE) 
+```
