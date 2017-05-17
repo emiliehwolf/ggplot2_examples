@@ -448,7 +448,10 @@ nzmap + coord_map("cylindrical")
 It's basically a bar chart changed to polar coordinates
 ```r
 mtcars$cyl <- factor(mtcars$cyl) 
-basicpie <- ggplot(mtcars, aes(x = factor(1), fill = cyl)) + geom_bar(width = 1)
+
+basicpie <- ggplot(mtcars, aes(x = factor(1), fill = cyl)) + 
+geom_bar(width = 1)
+
 basicpie + coord_polar(theta = "y")
 ```
 ![Rplotpie.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplotpie.png)
@@ -478,7 +481,9 @@ lbls <- names(slices)
 pct <- round(slices/sum(slices)*100)
 lbls <- paste(lbls, pct)
 lbls <- paste(lbls, "%", sep = "")
-pie(slices,labels = lbls, col = rainbow(length(lbls)), main = "Pie Chart of Age Groups")
+pie(slices,labels = lbls, col = rainbow(length(lbls)), 
+main = "Pie Chart of Age Groups")
 ```
 ![Rplot38.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot38.png)
+
 **Pie charts are not recommended because people are better able to distinguish differences in length than in volume.**
