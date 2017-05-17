@@ -41,7 +41,7 @@ xlim = c(1,6), ylim = c(0,40))
 ```
 ![Rplot2.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot2.png)
 
-### Identical quick plot with additional layers
+### Identical quick plot using layers (instead of arguments)
 ```r
 qplot(x = wt, y = mpg, data = mtcars) + 
 ggtitle("Miles per Gallon vs Weight\nAutomobiles (1973-74 models)") + 
@@ -58,7 +58,7 @@ basicCarPlot
 ```
 ![Rplot4.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot4.png)
 
-### ggsave()
+### ggsave() (opens and closes graphics device for you)
 ```r
 carPlot <- qplot(x = wt, y = mpg, data = mtcars)
 ggsave(file = "carPlot.png", carPlot)
@@ -318,7 +318,7 @@ carPlot + facet_wrap( ~ carb)
 ```
 ![Rplot24.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot24.png)
 
-### Combo of variables wrapped
+### Combination of variables wrapped
 ```r
 carPlot + facet_wrap( ~ carb + gear)
 ```
@@ -329,3 +329,26 @@ carPlot + facet_wrap( ~ carb + gear)
 qplot(wt, mpg, data = mtcars, facets = ~ cyl)
 ```
 ![Rplot26.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot26.png)
+
+
+# Remember this ggplot() rule:
+***Any reference to a variable must be wrapped within a call to the aes() function.
+
+### Pass a data frame to ggplot() (look familiar?)
+```r
+ggplot() + geom_point(data = mtcars, aes(x = wt, y = mpg))
+```
+![Rplot29.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot29.png)
+
+### Change plotting character/shape
+```r
+ggplot() + geom_point(data = mtcars, aes(x = wt, y = mpg, shape = cyl))
+```
+![Rplot30.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot30.png)
+
+### I() function not needed to edit all points; just keep outside the aes() function
+```r
+ggplot() + geom_point(data = mtcars, aes(x = wt, y = mpg), shape = 17, size = 3)
+```
+![Rplot31.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot31.png)
+
