@@ -377,6 +377,11 @@ geom_smooth(method = "lm", se = FALSE, col = "red", aes(shape = NULL))
 
 ### Multiple smoothing lines by variable
 ```r
+qplot(data = mtcars, x = wt, y = mpg, shape = cyl, size = I(3)) + 
+geom_smooth(method = "lm", se = FALSE, col = "red", aes(linetype = NULL))
+```
+OR
+```r
 ggplot(data = mtcars, aes(x = wt, y = mpg)) + 
 geom_point(aes(shape = cyl), size = 3) + 
 geom_smooth(method = "lm", se = FALSE, col = "red", aes(shape = cyl))
