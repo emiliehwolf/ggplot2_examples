@@ -463,18 +463,7 @@ pie(cyl, main = "Pie Chart")
 ```
 ![Rplotpiechart.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplotpiechart.png)
 
-### Rainbow pie chart with annotations and percentages
-```r
-str(esoph)
-```
-```
-'data.frame':	88 obs. of  5 variables:
- $ agegp    : Ord.factor w/ 6 levels "25-34"<"35-44"<..: 1 1 1 1 1 1 1 1 1 1 ...
- $ alcgp    : Ord.factor w/ 4 levels "0-39g/day"<"40-79"<..: 1 1 1 1 2 2 2 2 3 3 ...
- $ tobgp    : Ord.factor w/ 4 levels "0-9g/day"<"10-19"<..: 1 2 3 4 1 2 3 4 1 2 ...
- $ ncases   : num  0 0 0 0 0 0 0 0 0 0 ...
- $ ncontrols: num  40 10 6 5 27 7 4 7 2 1 ...
- ```
+### Rainbow pie chart of 'esoph' dataset with percentages
 ```r
 slices <- table(esoph$agegp)
 lbls <- names(slices)
