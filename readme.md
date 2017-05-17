@@ -332,7 +332,7 @@ qplot(wt, mpg, data = mtcars, facets = ~ cyl)
 
 
 # Remember this ggplot() rule:
-***Any reference to a variable must be wrapped within a call to the aes() function.
+***Any reference to a variable must be wrapped within a call to the aes() function.***
 
 ### Pass a data frame to ggplot() (look familiar?)
 ```r
@@ -346,7 +346,7 @@ ggplot() + geom_point(data = mtcars, aes(x = wt, y = mpg, shape = cyl))
 ```
 ![Rplot30.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot30.png)
 
-### I() function not needed to edit all points; just keep outside the aes() function
+### I() function not needed to edit all points; just put outside the aes() function
 ```r
 ggplot() + geom_point(data = mtcars, aes(x = wt, y = mpg), shape = 17, size = 3)
 ```
