@@ -1,4 +1,4 @@
-# Examples of qplot() and ggplot() 
+# Examples of qplot(), ggplot(), and pie charts
 ### Tidy data within R
 ```r
 library(help = "datasets")
@@ -476,6 +476,13 @@ pie(slices,labels = lbls, col = rainbow(length(lbls)),
 main = "Pie Chart of Age Groups")
 ```
 ![Rplot38.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot38.png)
+
+### 3D Pie using plotrix package
+```r
+library(plotrix)
+pie3D(slices, labels = lbls, explode = 0.1, main = "Age Groups")
+```
+![Rplot3d.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot3d.png)
 
 ### Themes and layouts
 ```r
