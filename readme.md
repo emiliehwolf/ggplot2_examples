@@ -404,3 +404,41 @@ xlab("Weight (lb/1000)") +
 ylab("Miles per US Gallon")
 ```
 ![Rplot36.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot36.png)
+
+### Remember this restriction:
+***The axes remain on the same scale. It is not possible to use ggplot2 to obtain a plot with two completely different y variables.***
+
+### Coordinate Systems
+```r
+grep("^coord", objects("package:ggplot2"), value = TRUE)
+```
+```
+[1] "coord_cartesian" "coord_equal"     "coord_fixed"    
+[4] "coord_flip"      "coord_map"       "coord_munch"    
+[7] "coord_polar"     "coord_quickmap"  "coord_trans"
+```
+```r
+## Extract map coordinates for New Zealand
+library(maps)
+nz <- map_data("nz") 
+```
+```r
+head(nz)
+      long       lat group order        region subregion
+1 172.7433 -34.44215     1     1 North.Island       <NA>
+2 172.7983 -34.45562     1     2 North.Island       <NA>
+3 172.8528 -34.44846     1     3 North.Island       <NA>
+4 172.8986 -34.41786     1     4 North.Island       <NA>
+5 172.9593 -34.42503     1     5 North.Island       <NA>
+6 173.0184 -34.39895     1     6 North.Island       <NA>
+```
+```r
+## Create plot object
+nzmap <- ggplot(nz, aes(x=long, y=lat, group=group)) + 
+geom_polygon(fill="white", color="black")
+
+## Now add a projections
+library(mapproj)
+nzmap + coord_map("cylindrical")
+```
+![Rplot37.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot37.png)
