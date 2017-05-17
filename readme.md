@@ -463,6 +463,8 @@ pie(cyl, main = "Pie Chart")
 ```
 ![Rplotpiechart.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplotpiechart.png)
 
+***Pie charts are not recommended because people are better able to distinguish differences in length than in volume.***
+
 ### Rainbow pie chart of 'esoph' dataset with percentages
 ```r
 slices <- table(esoph$agegp)
@@ -475,4 +477,28 @@ main = "Pie Chart of Age Groups")
 ```
 ![Rplot38.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot38.png)
 
-**Pie charts are not recommended because people are better able to distinguish differences in length than in volume.**
+### Tweak theme of individual plot
+```r
+grep("^theme", objects("package:ggplot2"), value = TRUE)
+```
+```
+ [1] "theme"          "theme_bw"       "theme_classic" 
+ [4] "theme_dark"     "theme_get"      "theme_gray"    
+ [7] "theme_grey"     "theme_light"    "theme_linedraw"
+[10] "theme_minimal"  "theme_replace"  "theme_set"     
+[13] "theme_update"   "theme_void"    
+```
+```r
+grep("^element", objects("package:ggplot2"), value = TRUE)
+```
+```
+[1] "element_blank" "element_grob"  "element_line" 
+[4] "element_rect"  "element_text" 
+```
+```r
+carPlot + facet_grid(~ cyl) + 
+theme(strip.background = element_rect(color = "blue", fill = NA), 
+panel.grid.minor = element_blank(), 
+panel.grid.major = element_blank())
+```
+![Rplot39.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot39.png)
