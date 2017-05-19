@@ -633,3 +633,5 @@ library(mapproj)
 mapOfUSA + coord_map("mercator")
 ```
 ![Rplot48.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot48.png)
+
+***Not sure how to edit legend margins to prevent chopping***
