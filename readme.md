@@ -577,7 +577,7 @@ mapOfUSA + scale_fill_discrete(guide = FALSE)
 ```
 
 # Activities
-1. Create a histogram of the Wind column from airquality. Use the bindwidth argument to adjust the width of the bins.
+1. Create a histogram of the Wind column from airquality. Use the binwidth argument to adjust the width of the bins.
 ```r
 theme_set(theme_bw(base_size = 14))
 qplot(Wind, data = airquality, binwidth = .25)
@@ -585,6 +585,10 @@ qplot(Wind, data = airquality, binwidth = .25)
 ![Rplot43.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot43.png)
 
 2. Create a boxplot of the Wind values for each Month using airquality.
+```r
+qplot(Month, Wind, data = airquality, group = Month, geom = "boxplot")
+```
+![Rplot44.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot44.png)
 
 3. Create a plot of Ozone against Wind from airquality. Ensure that the plot has appropriate titles and axis labels. Ensure that the Wind axis begins at zero. Add a linear smoothing line to the plot, removing the error bars.
 
