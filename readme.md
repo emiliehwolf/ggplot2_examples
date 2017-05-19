@@ -575,3 +575,16 @@ nrow =10, title.position = "top"))
 ```r
 mapOfUSA + scale_fill_discrete(guide = FALSE) 
 ```
+
+# Activities
+1. Create a histogram of the Wind column from airquality. Use the bindwidth argument to adjust the width of the bins.
+
+2. Create a boxplot of the Wind values for each Month using airquality.
+
+3. Create a plot of Ozone against Wind from airquality. Ensure that the plot has appropriate titles and axis labels. Ensure that the Wind axis begins at zero. Add a linear smoothing line to the plot, removing the error bars.
+
+4. Create a scatter plot of Height against Weight using demoData. Use a different color to distinquish between males and females and a different plotting symbol dependant on whether the subject smokes or not. 
+
+5. Re-create the basic plot of Height against Weight using demoData. This time, panel/facet the plot to create a 2x2 grid such that the first column contains data for nonsmokers and the first row contains data for females.
+
+6. Using the maps and mapproj packages, import the state data using map_data("state") and create a plot of the USA, where each state is represented by a different color. Ensure that there is sufficient space for the legend by moving it to the bottom of the plot. Spread the states across 10 columns. Transform the plot in order to view the country with a Mercator projection.
