@@ -591,6 +591,12 @@ qplot(Month, Wind, data = airquality, group = Month, geom = "boxplot")
 ![Rplot44.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot44.png)
 
 3. Create a plot of Ozone against Wind from airquality. Ensure that the plot has appropriate titles and axis labels. Ensure that the Wind axis begins at zero. Add a linear smoothing line to the plot, removing the error bars.
+```r
+qplot(Ozone, Wind, data = airquality, na.rm=TRUE) + 
+ggtitle("Ozone versus Wind") + xlim(c(0,200)) + ylim(c(0,25)) + 
+geom_smooth(method="lm", se = FALSE, na.rm=TRUE)
+```
+![Rplot45.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot45.png)
 
 4. Create a scatter plot of Height against Weight using demoData. Use a different color to distinquish between males and females and a different plotting symbol dependant on whether the subject smokes or not. 
 
