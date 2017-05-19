@@ -570,7 +570,8 @@ mapOfUSA + guides(fill = guide_legend(title = "State",
 nrow =10, title.position = "top"))
 ```
 ![Rplot00.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot00.png)
-In order to get an accurate-looking map, we need a "Mercator" projection. See the last example in this file.
+
+***In order to get an accurate-looking map, we need a "Mercator" projection. See the last example in this file.***
 
 ### Remove legend altogether
 ```r
