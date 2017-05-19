@@ -608,5 +608,9 @@ scale_color_manual(values = c("plum","steelblue"))
 ![Rplot46.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot46.png)
 
 5. Re-create the basic plot of Height against Weight using demoData. This time, panel/facet the plot to create a 2x2 grid such that the first column contains data for nonsmokers and the first row contains data for females.
+```r
+qplot(Height,Weight,data=demoData)+facet_grid(Sex ~ Smokes)
+```
+![Rplot47.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot47.png)
 
 6. Using the maps and mapproj packages, import the state data using map_data("state") and create a plot of the USA, where each state is represented by a different color. Ensure that there is sufficient space for the legend by moving it to the bottom of the plot. Spread the states across 10 columns. Transform the plot in order to view the country with a Mercator projection.
