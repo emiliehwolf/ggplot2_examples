@@ -438,7 +438,7 @@ str(nz)
 nzmap <- ggplot(nz, aes(x=long, y=lat, group=group)) + 
 geom_polygon(fill="white", color="black")
 
-## Now add a projections
+## Now add a projection
 library(mapproj)
 nzmap + coord_map("cylindrical")
 ```
@@ -569,7 +569,8 @@ mapOfUSA <- mapOfUSA + theme(legend.position = "bottom")
 mapOfUSA + guides(fill = guide_legend(title = "State",
 nrow =10, title.position = "top"))
 ```
-![Rplot50.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot50.png)
+![Rplot00.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot00.png)
+In order to get an accurate-looking map, we need a "Mercator" projection. See the last example in this file.
 
 ### Remove legend altogether
 ```r
@@ -614,3 +615,20 @@ qplot(Height,Weight,data=demoData)+facet_grid(Sex ~ Smokes)
 ![Rplot47.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot47.png)
 
 6. Using the maps and mapproj packages, import the state data using map_data("state") and create a plot of the USA, where each state is represented by a different color. Ensure that there is sufficient space for the legend by moving it to the bottom of the plot. Spread the states across 10 columns. Transform the plot in order to view the country with a Mercator projection.
+```r
+library(maps)
+states <- map_data("state")
+mapOfUSA <- qplot(long, lat, data = states, 
+geom = "polygon", group = group, fill = region, col = I("black"))
+mapOfUSA <- mapOfUSA + theme(legend.position = "bottom")
+mapOfUSA <- mapOfUSA + guides(fill = guide_legend(title = "State", 
+nrow =10, title.position = "top"))
+
+library(randomcoloR)
+mypalette <- distinctColorPalette(49)
+mapOfUSA <- mapOfUSA + scale_fill_manual(values=as.character(mypalette))
+
+library(mapproj)
+mapOfUSA + coord_map("mercator")
+```
+![Rplot48.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot48.png)
