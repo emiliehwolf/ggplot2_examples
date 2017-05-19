@@ -622,7 +622,7 @@ mapOfUSA <- qplot(long, lat, data = states,
 geom = "polygon", group = group, fill = region, col = I("black"))
 mapOfUSA <- mapOfUSA + theme(legend.position = "bottom")
 mapOfUSA <- mapOfUSA + guides(fill = guide_legend(title = "State", 
-nrow =10, title.position = "top"))
+ncol = 10, title.position = "top"))
 
 library(randomcoloR)
 mypalette <- distinctColorPalette(49)
