@@ -599,6 +599,13 @@ geom_smooth(method="lm", se = FALSE, na.rm=TRUE)
 ![Rplot45.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot45.png)
 
 4. Create a scatter plot of Height against Weight using demoData. Use a different color to distinquish between males and females and a different plotting symbol dependant on whether the subject smokes or not. 
+```r
+theme_set(theme_light(base_size = 14, base_family = "Geneva"))
+qplot(Height,Weight,data=demoData, shape = Smokes, col = Sex, 
+size = I(4)) + scale_shape_manual(values = c(8,16)) + 
+scale_color_manual(values = c("plum","steelblue"))
+```
+![Rplot46.png](https://github.com/emiliehwolf/ggplot2_examples/blob/master/plots/Rplot46.png)
 
 5. Re-create the basic plot of Height against Weight using demoData. This time, panel/facet the plot to create a 2x2 grid such that the first column contains data for nonsmokers and the first row contains data for females.
 
