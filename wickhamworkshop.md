@@ -1,4 +1,6 @@
 # http://had.co.nz/ggplot2
+
+### See the graphics produced by these code chunks on this page here: http://www.wolf.engineer/the-grammar.html
 ```r
 install.packages("ggplot2")
 library(ggplot2)
