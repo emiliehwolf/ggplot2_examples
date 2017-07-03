@@ -1,3 +1,5 @@
+(More qplot and ggplot examples here: http://www.wolf.engineer/the-grammar.html)
+
 # Examples of qplot(), ggplot(), and pie charts
 ### Tidy data within R
 ```r
