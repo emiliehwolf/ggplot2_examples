@@ -1,5 +1,12 @@
-(More qplot and ggplot examples here: http://www.wolf.engineer/the-grammar.html)
-(And even MORE ggplot examples here: http://r4ds.had.co.nz/visualize.html)
+More qplot and ggplot examples here: 
+
+http://www.wolf.engineer/the-grammar.html
+
+http://www.wolf.engineer/moreggplot2.html
+
+http://r4ds.had.co.nz/visualize.html
+
+
 
 # Examples of qplot(), ggplot(), and pie charts
 ### Tidy data within R
