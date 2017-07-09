@@ -1,3 +1,10 @@
+---
+title: "The Grammar"
+output: 
+  html_document:
+    keep_md: true
+---
+
 # http://had.co.nz/ggplot2
 ### This HTML page and its graphics were created using knitr by taking a simple demo R script by Hadley Wickham and adding some R markdown.
 ```{r}

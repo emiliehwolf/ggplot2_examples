@@ -1,36 +1,37 @@
----
-output: 
-  html_document:
-    keep_md: true
----
 
 # Data visualization with ggplot2
 
-```{r, echo=FALSE, message=FALSE, eval=FALSE}
-# Set eval=TRUE to hide all results and figures.
-# This sets defaults. Can change this manually in individual chunks.
-# Must load knitr so opts_chunk is in search path.
-library(knitr)
-opts_chunk$set(results="hide", fig.show="hide", fig.keep="none")
-```
 
-```{r, echo=FALSE, message=FALSE, eval=TRUE}
-library(knitr)
-opts_chunk$set(message=FALSE)
-```
+
+
 
 ## Review
 
 Remember an earlier lesson where we introduced basic plotting commands using built-in data and base plotting tools. For example, we made a few plots using Edgar Anderson's famous iris dataset, which measured petal and sepal length and width for several different species of flower.
 
-```{r irisbase}
+
+```r
 # Load some data and look at the first few lines
 data(iris)
 head(iris)
+```
 
+```
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+```
+
+```r
 # Make a basic scatter plot
 with(iris, plot(Sepal.Length, Petal.Length))
 ```
+
+![](moreggplot2_files/figure-html/irisbase-1.png)<!-- -->
 
 When we call `plot` in this way, we are using built-in, or **base** graphics. R's base graphics are powerful and nearly infinitely customizable. 
 
@@ -42,23 +43,55 @@ Now let's look at a bigger dataset. We're going to be using a data visualization
 
 Recall how to install and load packages. Install the package if you haven't already:
         
-```{r installggplot2, eval=FALSE}
+
+```r
 # Only need to do this once
 install.packages("ggplot2")
 ```
 
 Then load it:
         
-```{r loadggplot2, message=FALSE}
+
+```r
 library(ggplot2)
 ```
 
 Now let's load the diamonds dataset and take a look at the first few rows and it's structure with commands we learned previously. To learn more about this dataset you can also run `?diamonds`. 
 
-```{r diamondshead}
+
+```r
 data(diamonds)
 head(diamonds)
+```
+
+```
+## # A tibble: 6 × 10
+##   carat       cut color clarity depth table price     x     y     z
+##   <dbl>     <ord> <ord>   <ord> <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+## 1  0.23     Ideal     E     SI2  61.5    55   326  3.95  3.98  2.43
+## 2  0.21   Premium     E     SI1  59.8    61   326  3.89  3.84  2.31
+## 3  0.23      Good     E     VS1  56.9    65   327  4.05  4.07  2.31
+## 4  0.29   Premium     I     VS2  62.4    58   334  4.20  4.23  2.63
+## 5  0.31      Good     J     SI2  63.3    58   335  4.34  4.35  2.75
+## 6  0.24 Very Good     J    VVS2  62.8    57   336  3.94  3.96  2.48
+```
+
+```r
 str(diamonds)
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	53940 obs. of  10 variables:
+##  $ carat  : num  0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
+##  $ cut    : Ord.factor w/ 5 levels "Fair"<"Good"<..: 5 4 2 4 2 3 3 3 1 3 ...
+##  $ color  : Ord.factor w/ 7 levels "D"<"E"<"F"<"G"<..: 2 2 2 6 7 7 6 5 2 5 ...
+##  $ clarity: Ord.factor w/ 8 levels "I1"<"SI2"<"SI1"<..: 2 3 5 4 2 6 7 3 4 5 ...
+##  $ depth  : num  61.5 59.8 56.9 62.4 63.3 62.8 62.3 61.9 65.1 59.4 ...
+##  $ table  : num  55 61 65 58 58 57 57 55 61 61 ...
+##  $ price  : int  326 326 327 334 335 336 336 337 337 338 ...
+##  $ x      : num  3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...
+##  $ y      : num  3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...
+##  $ z      : num  2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...
 ```
 
 From this we can see this dataset has prices of nearly 54,000 diamonds along with various features about the diamonds, such as the weight, the quality of the cut, the color, the clarity, and measurements of various dimensions. 
@@ -67,17 +100,23 @@ From this we can see this dataset has prices of nearly 54,000 diamonds along wit
 
 If we wanted to do some exploratory data analysis we might start by plotting the price versus the weight of the diamond.
 
-```{r basediamond}
+
+```r
 with(diamonds, plot(carat, price))
 ```
+
+![](moreggplot2_files/figure-html/basediamond-1.png)<!-- -->
 
 As we would expect there is definitely a relationship between the size of the diamond and its cost, but how do the other variables (cut, color, clarity) affect the price? We could examine the interrelationships of all these variables using base R graphics, but it could become extremely cumbersome. 
 
 **ggplot2** is a widely used R package that extends R's visualization capabilities. It takes the hassle out of things like creating legends, mapping other variables to scales like color, or faceting plots into small multiples. We'll learn about what all these things mean shortly. To start with, let's produce the same plot as before, but this time using **ggplot2**'s `qplot` function. The `qplot` function is a quick and dirty convenience function to use **ggplot2**, and its syntax will be familiar if you're used to the base `plot` function. We'll cover advanced usage with the `ggplot` function later on.
 
-```{r qplot1}
+
+```r
 qplot(carat, price, data = diamonds)
 ```
+
+![](moreggplot2_files/figure-html/qplot1-1.png)<!-- -->
 
 The syntax is very similar to R's base graphics where you specify what's on the x and y axes, then give it the name of the data frame you want to use. We see again the strong relationship between the size of the diamond and its price, but the relationship doesn't appear linear. How does the diamond's clarity affect the weight-price relationship? 
 
@@ -85,9 +124,12 @@ The syntax is very similar to R's base graphics where you specify what's on the 
 
 One option we could use is to color-code the points by their clarity. Here, we pass another `col=` argument with the variable we'd like to use for color-coding:
 
-```{r clarcolor}
+
+```r
 qplot(carat, price, data = diamonds, col = clarity)
 ```
+
+![](moreggplot2_files/figure-html/clarcolor-1.png)<!-- -->
 
 Examining the plot you can see that poor-clarity diamonds (included, small inclusions, etc) fetch a lower price per carat relative to more clear diamonds (very small inclusions, internally flawless, etc). We can see that **ggplot2** color-codes the points using a sensible default color scheme, and automatically draws a legend on the side for us. This requires a good deal of extra error-prone coding using base graphics.
 
@@ -95,33 +137,45 @@ However, with 54,000 points on this plot, there is a good deal of overplotting t
 
 This can be accomplished easily using **ggplot2**:
 
-```{r facetclar}
+
+```r
 qplot(carat, price, data = diamonds, facets = ~ clarity)
 ```
+
+![](moreggplot2_files/figure-html/facetclar-1.png)<!-- -->
 
 Here, the `facets` argument expects a forumla object that's constructed with the `~` operator. Here, we've plotted the price vs. weight separately for each level of clarity. We can see what we suspected before. With dirty diamonds (included, and perhaps small inclusions), the weight-price relationship is linear or slightly quadratic. Large diamonds can be purchased rather cheaply. But for very clear diamonds (internally flawless), the relationship is quadratic or even exponential.
 
 Let's examine the weight-price relationship for various color ratings:
         
-        ```{r facetcol}
-qplot(carat, price, data = diamonds, facets = ~ color)
-```
+        
+        ```r
+        qplot(carat, price, data = diamonds, facets = ~ color)
+        ```
+        
+        ![](moreggplot2_files/figure-html/facetcol-1.png)<!-- -->
 
 Here we see that for whiter diamonds (D, E, F) the price rises more quickly with increasing weight than for yellower diamonds (H, I, J).
 
 We can further facet the plot across two different categorical variables using the same syntax:
         
-        ```{r facetclarcol, fig.height=10, fig.width=10}
-qplot(carat, price, data = diamonds, facets = clarity ~ color)
-```
+        
+        ```r
+        qplot(carat, price, data = diamonds, facets = clarity ~ color)
+        ```
+        
+        ![](moreggplot2_files/figure-html/facetclarcol-1.png)<!-- -->
 
 Here we see that the price per carat rises very steeply for very white, very clear diamonds, while the relationship is nearly linear for yellower, more flawed diamonds. We can see that a perfect white diamond averages around $15,000 while a yellow included diamond can be had for only around $2,000.
 
 Finally, we can combind both color-coding and faceting in the same plot. Let's use the same faceting scheme as last time, but color the points by the quality of the diamond's cut.
 
-```{r facetclarcol_colcut, fig.height=10, fig.width=10}
+
+```r
 qplot(carat, price, data = diamonds, facets = clarity ~ color, col = cut)
 ```
+
+![](moreggplot2_files/figure-html/facetclarcol_colcut-1.png)<!-- -->
 
 This color-coding reveals that clearer, whiter diamonds *generally* have higher quality cuts, but the relationship doesn't appear strong, visually. Looking down the plot toward clearer diamonds you start to see more "Ideal" cuts than at the top, which are the more included diamonds. 
 
@@ -150,7 +204,8 @@ In the examples above, we used **ggplot2**'s convenience function, `qplot`, beca
 
 The `ggplot` function has two required arguments: the *data* used for creating the plot, and an *aesthetic* mapping to describe how variables in said data are mapped to things we can see on the plot. Let's use `ggplot` to recreate some of the same plots we produced above. First, the simple scatterplot:
 
-```{r ggdiamonds}
+
+```r
 # Using the qplot convenience function:
 # qplot(carat, price, data = diamonds)
 
@@ -158,65 +213,98 @@ The `ggplot` function has two required arguments: the *data* used for creating t
 ggplot(diamonds, aes(carat, price)) + geom_point()
 ```
 
+![](moreggplot2_files/figure-html/ggdiamonds-1.png)<!-- -->
+
 Here, we've built our plot in layers. First, we create a canvas for plotting layers to come using the `ggplot` function, specifying which **data** to use (here, the *diamonds* data frame), and an **aesthetic mapping** of *carat* to the x-axis and *price* to the y-axis. We next add a layer to the plot, specifying a **geom**, or a way of visually representing the aesthetic mapping. Here we're using a point. Instead of using a point, we could use a different geom. Here, let's use [hexagonal binning](http://cran.r-project.org/web/packages/hexbin/vignettes/hexagon_binning.pdf) instead of a point.
 
-```{r gghexbin}
+
+```r
 ggplot(diamonds, aes(carat, price)) + geom_hex()
 ```
 
+```
+## Warning: Computation failed in `stat_binhex()`:
+## Package `hexbin` required for `stat_binhex`.
+## Please install and try again.
+```
+
+![](moreggplot2_files/figure-html/gghexbin-1.png)<!-- -->
+
 Here, each bin represents a segment of the plotting surface with lighter blue colors representing more density in that segment. The number of bins can be adjusted as an argument to the `geom_hex()` function. This is one method of solving the overplotting problem we have in this plot without doing any faceting. Another method, here using points again, is to lower the opacity of each point. Here, `alpha=1/5` sets the opacity of each point to 20%. In other words, 5 points would have to overlap to result in a completely solid point. Note that in this case we're not *mapping* the alpha level aesthetic to some other variable as we did above with color -- we're setting it to a static value of 0.20 for all points in the layer.
 
-```{r gghexbin2}
+
+```r
 ggplot(diamonds, aes(carat, price)) + geom_point(alpha=1/5)
 ```
 
+![](moreggplot2_files/figure-html/gghexbin2-1.png)<!-- -->
+
 We can easily add more layers to the plot. For instance, we could add another layer displaying a smoothed conditional mean using the `geom_smooth()` function.
 
-```{r smoothgam}
+
+```r
 ggplot(diamonds, aes(carat, price)) + geom_point() + geom_smooth()
 ```
 
+![](moreggplot2_files/figure-html/smoothgam-1.png)<!-- -->
+
 We'll get a message telling us that because we have >1,000 observations we will default to using a generalized additive model. We could easily plot a straight line by specifying that we want a linear model (`method="lm"`) instead of a generalized additive model, the default for large datasets.
 
-```{r smoothlinear}
+
+```r
 ggplot(diamonds, aes(carat, price)) + geom_point() + geom_smooth(method="lm")
 ```
 
+![](moreggplot2_files/figure-html/smoothlinear-1.png)<!-- -->
+
 Getting back to our examples above, using the `ggplot` syntax we can map the color of the points (an aesthetic) onto one of the variables in our dataset.
 
-```{r ggclarcol}
+
+```r
 # Using the qplot convenience function:
 # qplot(carat, price, data = diamonds, col = clarity) 
 # Using ggplot:
 ggplot(diamonds, aes(carat, price, col=clarity)) + geom_point()
 ```
 
+![](moreggplot2_files/figure-html/ggclarcol-1.png)<!-- -->
+
 We can also create a faceted plot as we did above using the `ggplot` function adding another layer with `facet_grid`.
 
-```{r ggfacet, fig.height=10, fig.width=10}
+
+```r
 # Using the qplot convenience function:  
 # qplot(carat, price, data = diamonds, facets = clarity ~ color)   
 # Using ggplot:
 ggplot(diamonds, aes(carat, price)) + geom_point() + facet_grid(clarity ~ color)
 ```
 
+![](moreggplot2_files/figure-html/ggfacet-1.png)<!-- -->
+
 By combining multiple layers with aesthetic mappings to different scales, **ggplot2** provides a foundation for producing a wide range of statistical graphics beyond simple "named" plots like scatter plots, histograms, bar plots, etc.
 
 How about a stacked histogram, mapping the fill color of the stacked histogram to levels of the *clarity* variable:
 
-```{r ggfillhisto}
+
+```r
 ggplot(diamonds, aes(price, fill=clarity)) + geom_histogram(position="fill", binwidth=200)
 ```
 
+![](moreggplot2_files/figure-html/ggfillhisto-1.png)<!-- -->
+
 Or what about box plots of the price grouped separately by the quality of the cut, color-coded by the color of the diamond, with the price on the y-axis being on the log (base 10) scale? Simple:
 
-```{r ggboxplots, fig.width=12}
+
+```r
 ggplot(diamonds, aes(cut, price)) + geom_boxplot(aes(fill=color)) + scale_y_log10()
 ```
 
+![](moreggplot2_files/figure-html/ggboxplots-1.png)<!-- -->
+
 Or what about a kernel density plot (think about a smooth histogram) of the diamond's table depth in different semitransparent curves with the color fill mapped to each level of *cut*, all on the same facet limited to depths between 55 and 70, with a title and a proper axis labels? This also shows the syntax of building up a plot one step at a time. We first initialize the plot with `ggplot`, giving it the data we're working with, and aesthetic mappings. We then add a `geom_density` layer, limit the x-axis displayed, and finally give it a title and axis labels. The plot is in the **g** object here; we can simply enter `g` and the plot will be displayed.
 
-```{r ggdepthdensity, warning=FALSE}
+
+```r
 g <- ggplot(diamonds, aes(depth, fill=cut)) 
 g <- g + geom_density(alpha=1/4) 
 g <- g + xlim(55, 70)
@@ -225,9 +313,12 @@ g <- g + xlab("Table Depth") + ylab("Density")
 g
 ```
 
+![](moreggplot2_files/figure-html/ggdepthdensity-1.png)<!-- -->
+
 Finally, we can save the plot created using the `ggsave` function:
 
-```{r ggsave, eval=FALSE}
+
+```r
 ggsave(filename="~/Desktop/table-depth-density.png", plot=g)
 ```
 
